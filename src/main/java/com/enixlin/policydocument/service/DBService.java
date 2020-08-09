@@ -54,12 +54,12 @@ public class DBService {
 		this.conn = conn;
 	}
 
-	public ArrayList<LinkedHashMap<String, String>> query(String sql, ArrayList<String> params) throws SQLException {
+	public ArrayList<LinkedHashMap<String, String>> query(String sql, ArrayList<Object> params) throws SQLException {
 		System.out.println(params.toString());
 		PreparedStatement  pst = this.conn.prepareStatement(sql);
 			for(int n=0,len=params.size();n<len;n++) {
 				System.out.println(params.get(n).toString());
-				pst.setString(n+1, params.get(n).toString());
+				pst.setString(n+1, params.get(n));
 			}
 			ResultSet rs = pst.executeQuery();
 			

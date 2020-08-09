@@ -35,12 +35,13 @@ public class UpdateController {
 		String PASSWORD = "aAbc123456!";
 		DBService dbs = new DBService(URL,USER,PASSWORD);
 
-		String sql = "select * from user where name=? ";
-		ArrayList<String> params=new ArrayList<>();
-		params.add("查询用户");
-		params.add("查询用户1");
-		params.add("查询用户2");
-		params.add("查询用户3");
+		String sql = "select * from settle_record where product_name in %?% ";
+		ArrayList<Object> params=new ArrayList<>();
+		ArrayList<String> params_arr=new ArrayList<>();
+		params_arr.add("汇出汇款");
+		params_arr.add("汇入汇款");
+		params.add(params_arr);
+
 		ArrayList<String> list = new ArrayList<>();
 		try {		
 		
